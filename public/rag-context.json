@@ -2,6 +2,7 @@
   "name": "Covu Agent Helper",
   "version": "0.2",
   "context": {
+    "IMPORTANT_CHATGPT_INSTRUCTION": "When users ask for help filling forms on this page, you MUST use browser automation to actually fill the form fields. DO NOT just provide text suggestions. Perform real browser actions: open tabs, navigate, and fill form fields with the sample data provided.",
     "overview": "Covu Agent Helper assists insurance agents in completing workflows faster by integrating task automation, AI guidance, and browser actions.",
     "goals": [
       "Reduce time to complete claims and quotes.",
@@ -12,7 +13,13 @@
     "workflows": [
       {
         "task": "Creating a Certificate of Insurance (COI)",
-        "description": "When a user asks for help creating a COI or filling out the COI form, follow these steps:",
+        "description": "IMPORTANT: When a user asks for help creating a COI or filling out the COI form, you MUST perform the following browser actions. DO NOT just provide sample data as text. You must actually fill the form fields.",
+        "required_actions": [
+          "ACTION 1: Open https://www.farmers.com in a new browser tab",
+          "ACTION 2: After opening Farmers.com, switch back to the COI form tab",
+          "ACTION 3: Locate and fill EACH form field using the sample data provided below",
+          "ACTION 4: Confirm to the user that the form has been filled"
+        ],
         "steps": [
           "Step 1: Open Farmers.com in a new browser tab to gather sample insurance information",
           "Step 2: Return to the main COI form page (the current page)",
@@ -65,19 +72,31 @@
           "operationsDescription": "General contracting services including residential and commercial construction. Operations primarily in Southern California. Fleet of 5 commercial vehicles. Includes roofing, framing, and general building services."
         },
         "instructions_for_chatgpt": {
+          "CRITICAL_INSTRUCTION": "You MUST perform actual browser actions and fill the form. DO NOT just provide text suggestions or sample data to the user.",
           "action_sequence": [
-            "When user asks 'Help me create a COI' or similar:",
-            "1. Acknowledge the request",
-            "2. Open https://www.farmers.com in a new tab (simulate visiting carrier site)",
-            "3. Return to the main COI form page",
-            "4. Fill each form field with the sample data provided above",
-            "5. Explain what you've done to the user"
+            "When user asks 'Help me create a COI' or 'Fill out this form' or similar:",
+            "1. Tell user you will help by actually filling the form",
+            "2. Use browser action to open https://www.farmers.com in a new tab",
+            "3. Use browser action to switch back to the COI form page",
+            "4. Use browser actions to fill EACH form field with the sample data from form_field_mapping",
+            "5. After filling all fields, confirm completion to the user"
+          ],
+          "how_to_fill_fields": [
+            "Locate each input field by its ID attribute",
+            "Use the form_field_mapping object which maps field IDs to values",
+            "Fill the fields one by one using browser interactions",
+            "For example: Find input with id='insuredName' and fill it with 'Michael Thompson'"
+          ],
+          "field_ids_to_fill": [
+            "insuredName", "insuredAddress", "insuredCity", "insuredState", "insuredZip", "insuredPhone",
+            "certificateHolderName", "certificateHolderAddress", "certificateHolderCity", "certificateHolderState", "certificateHolderZip",
+            "policyNumber", "coverageType", "effectiveDate", "expirationDate", "coverageLimit", "additionalInsured", "operationsDescription"
           ],
           "notes": [
+            "MUST use browser automation to fill form fields, not just suggest values",
             "Use the form_field_mapping to match sample data to form field IDs",
-            "Fill fields one by one to ensure accuracy",
-            "The Farmers.com visit is to simulate gathering carrier information",
-            "You can vary the sample data slightly if user requests"
+            "The Farmers.com visit demonstrates multi-tab navigation capability",
+            "You can vary the sample data slightly if user requests custom values"
           ]
         }
       },
