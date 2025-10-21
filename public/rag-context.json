@@ -1,0 +1,41 @@
+{
+  "name": "Covu Agent Helper",
+  "version": "0.1",
+  "context": {
+    "overview": "Covu Agent Helper assists insurance agents in completing workflows faster by integrating task automation, AI guidance, and browser actions.",
+    "goals": [
+      "Reduce time to complete claims and quotes.",
+      "Help fill web forms with context-aware AI assistance.",
+      "Integrate ChatGPT Atlas for intelligent task execution."
+    ],
+    "workflows": [
+      {
+        "task": "Filing a new claim",
+        "steps": [
+          "Navigate to the Claims page in Covu Portal",
+          "Select 'New Claim'",
+          "Upload required documents",
+          "Review and submit"
+        ],
+        "common_questions": [
+          "What documents are needed for a home claim?",
+          "How do I check the claim status?"
+        ]
+      },
+      {
+        "task": "Creating a new quote",
+        "steps": [
+          "Go to Quote Center",
+          "Click 'New Quote'",
+          "Enter customer data (name, address, coverage details)",
+          "Submit and review pricing"
+        ]
+      }
+    ],
+    "faq": {
+      "How do I reset my Covu password?": "Go to Account Settings → Security → Reset Password.",
+      "How do I connect to carrier sites?": "Use the 'External Portals' tab in Covu Portal."
+    }
+  }
+}
+
