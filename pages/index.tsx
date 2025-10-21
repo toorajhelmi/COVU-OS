@@ -47,9 +47,14 @@ export default function Home() {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Certificate of Insurance (COI)
-            </h1>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <h1 className="text-4xl font-bold text-gray-800">
+                Certificate of Insurance (COI)
+              </h1>
+              <span className="px-3 py-1 text-sm font-semibold bg-blue-100 text-blue-700 rounded-full">
+                v0.3
+              </span>
+            </div>
             <p className="text-gray-600">
               Need help? Ask ChatGPT to assist you in filling out this form!
             </p>
