@@ -1,14 +1,86 @@
 {
   "name": "Covu Agent Helper",
-  "version": "0.1",
+  "version": "0.2",
   "context": {
     "overview": "Covu Agent Helper assists insurance agents in completing workflows faster by integrating task automation, AI guidance, and browser actions.",
     "goals": [
       "Reduce time to complete claims and quotes.",
       "Help fill web forms with context-aware AI assistance.",
-      "Integrate ChatGPT Atlas for intelligent task execution."
+      "Integrate ChatGPT Atlas for intelligent task execution.",
+      "Automate Certificate of Insurance (COI) creation."
     ],
     "workflows": [
+      {
+        "task": "Creating a Certificate of Insurance (COI)",
+        "description": "When a user asks for help creating a COI or filling out the COI form, follow these steps:",
+        "steps": [
+          "Step 1: Open Farmers.com in a new browser tab to gather sample insurance information",
+          "Step 2: Return to the main COI form page (the current page)",
+          "Step 3: Fill out the form with the following sample data"
+        ],
+        "sample_data": {
+          "insured_information": {
+            "name": "Michael Thompson",
+            "address": "789 Oak Avenue",
+            "city": "San Diego",
+            "state": "CA",
+            "zip": "92101",
+            "phone": "(619) 555-0123"
+          },
+          "certificate_holder": {
+            "name": "Westfield Construction LLC",
+            "address": "1500 Industrial Park Drive",
+            "city": "Irvine",
+            "state": "CA",
+            "zip": "92614"
+          },
+          "policy_information": {
+            "policy_number": "FRM-2024-78945",
+            "coverage_type": "general-liability",
+            "effective_date": "2024-10-01",
+            "expiration_date": "2025-10-01",
+            "coverage_limit": "$2,000,000",
+            "additional_insured": "Westfield Construction LLC",
+            "operations_description": "General contracting services including residential and commercial construction. Operations primarily in Southern California. Fleet of 5 commercial vehicles. Includes roofing, framing, and general building services."
+          }
+        },
+        "form_field_mapping": {
+          "insuredName": "Michael Thompson",
+          "insuredAddress": "789 Oak Avenue",
+          "insuredCity": "San Diego",
+          "insuredState": "CA",
+          "insuredZip": "92101",
+          "insuredPhone": "(619) 555-0123",
+          "certificateHolderName": "Westfield Construction LLC",
+          "certificateHolderAddress": "1500 Industrial Park Drive",
+          "certificateHolderCity": "Irvine",
+          "certificateHolderState": "CA",
+          "certificateHolderZip": "92614",
+          "policyNumber": "FRM-2024-78945",
+          "coverageType": "general-liability",
+          "effectiveDate": "2024-10-01",
+          "expirationDate": "2025-10-01",
+          "coverageLimit": "$2,000,000",
+          "additionalInsured": "Westfield Construction LLC",
+          "operationsDescription": "General contracting services including residential and commercial construction. Operations primarily in Southern California. Fleet of 5 commercial vehicles. Includes roofing, framing, and general building services."
+        },
+        "instructions_for_chatgpt": {
+          "action_sequence": [
+            "When user asks 'Help me create a COI' or similar:",
+            "1. Acknowledge the request",
+            "2. Open https://www.farmers.com in a new tab (simulate visiting carrier site)",
+            "3. Return to the main COI form page",
+            "4. Fill each form field with the sample data provided above",
+            "5. Explain what you've done to the user"
+          ],
+          "notes": [
+            "Use the form_field_mapping to match sample data to form field IDs",
+            "Fill fields one by one to ensure accuracy",
+            "The Farmers.com visit is to simulate gathering carrier information",
+            "You can vary the sample data slightly if user requests"
+          ]
+        }
+      },
       {
         "task": "Filing a new claim",
         "steps": [
@@ -34,7 +106,9 @@
     ],
     "faq": {
       "How do I reset my Covu password?": "Go to Account Settings → Security → Reset Password.",
-      "How do I connect to carrier sites?": "Use the 'External Portals' tab in Covu Portal."
+      "How do I connect to carrier sites?": "Use the 'External Portals' tab in Covu Portal.",
+      "What is a Certificate of Insurance?": "A Certificate of Insurance (COI) is a document that provides proof of insurance coverage. It's commonly required by clients, contractors, or landlords to verify that you have adequate insurance.",
+      "How can ChatGPT help me fill out forms?": "When you open this page in ChatGPT Atlas, you can ask for help. ChatGPT can navigate to external sites, gather information, and automatically fill out form fields with sample or real data."
     }
   }
 }
